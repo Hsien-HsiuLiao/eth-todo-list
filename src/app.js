@@ -1,10 +1,11 @@
 App = {
     contracts: {},
-    
+
     load: async () => {
         await App.loadWeb3()
         await App.loadAccount()
         await App.loadContract()
+        await App.render()
     },
 
 
@@ -50,6 +51,13 @@ loadWeb3: async () => {
     App.contracts.TodoList = TruffleContract(todoList)
     App.contracts.TodoList.setProvider(App.web3Provider)
     console.log(todoList)
+    App.todoList = await App.contracts.TodoList.deployed()
+  }, 
+
+  render: async () => {
+
+    //render account
+    $('#account').html(App.account)
   }
     
 }
