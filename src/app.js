@@ -72,6 +72,19 @@ loadWeb3: async () => {
     //update loading state
     App.setLoading(false)
 
+  },
+
+  setLoading: (boolean) => {
+    App.loading = boolean
+    const loader = $('#loader')
+    const content = $('#content')
+    if (boolean) {
+      loader.show()
+      content.hide()
+    } else {
+      loader.hide()
+      content.show()
+    }
   }
     
 }
