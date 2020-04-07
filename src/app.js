@@ -74,6 +74,10 @@ loadWeb3: async () => {
 
   },
 
+  renderTasks: async () => {
+
+  },
+
   setLoading: (boolean) => {
     App.loading = boolean
     const loader = $('#loader')
