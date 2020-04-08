@@ -75,6 +75,15 @@ loadWeb3: async () => {
   },
 
   renderTasks: async () => {
+    //load the total task count from blockchain
+    const taskCount = await App.todoList.taskCount()
+    const $taskTemplate = $('.taskTemplate')
+
+    //render out each task
+    for (var i=1; i<=taskCount; i++) {
+      
+    }
+    //show the task
 
   },
 
