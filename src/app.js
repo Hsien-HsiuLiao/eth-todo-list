@@ -81,7 +81,10 @@ loadWeb3: async () => {
 
     //render out each task
     for (var i=1; i<=taskCount; i++) {
-      
+      const task = await App.todoList.tasks(i)
+      const taskId = task[0].toNumber()
+      const taskContent = task[1]
+      const taskCompleted = task[2]
     }
     //show the task
 
