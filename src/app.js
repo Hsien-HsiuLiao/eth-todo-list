@@ -69,6 +69,9 @@ loadWeb3: async () => {
     //render account
     $('#account').html(App.account)
 
+    //render tasks
+    await App.renderTasks()
+
     //update loading state
     App.setLoading(false)
 
@@ -85,9 +88,24 @@ loadWeb3: async () => {
       const taskId = task[0].toNumber()
       const taskContent = task[1]
       const taskCompleted = task[2]
-    }
-    //show the task
 
+      const $newTaskTemplate = $taskTemplate.clone()
+      $newTaskTemplate.find('.content').html(taskContent)
+      $newTaskTemplate.find('.input')
+                      .prop('name', taskId)
+                      .prop('checked', taskCompleted)
+                      .on('click', App.toggleCompleted)
+
+      //put task in correct list
+      if(taskCompleted) {
+        $('#completeTaskList').append($newTaskTemplate)
+      } else {
+        $('#taskList').append($newTaskTemplate)
+      }
+    
+    //show the task
+    $newTaskTemplate.show()
+    }
   },
 
   setLoading: (boolean) => {
